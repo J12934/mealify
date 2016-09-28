@@ -28,7 +28,6 @@
         </button>
         <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{-- config('app.name', 'Laravel') --}}
                 <img src="img/logo-with-text.svg" height="50" alt="">
             </a>
             <ul class="nav navbar-nav pull-xs-right">
@@ -62,10 +61,7 @@
             </ul>
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Recipes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Meals</a>
+                    <a class="nav-link" href="#">Explore</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Recipe Finder</a>
