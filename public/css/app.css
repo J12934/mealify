@@ -5077,14 +5077,15 @@ a.text-danger:focus, a.text-danger:hover {
 .nav {
   padding-top: 12px; }
 
-.card-media .card-img-overlay {
-  padding: 5px;
-  z-index: 1000;
-  background: -webkit-linear-gradient(top, rgba(70, 70, 70, 0) 0%, rgba(70, 70, 70, 0.05) 60%, rgba(70, 70, 70, 0.15) 70%, rgba(70, 70, 70, 0.4) 100%);
-  background: linear-gradient(to bottom, rgba(70, 70, 70, 0) 0%, rgba(70, 70, 70, 0.05) 60%, rgba(70, 70, 70, 0.15) 70%, rgba(70, 70, 70, 0.4) 100%); }
-
-.card-media .card-title {
-  margin-bottom: 0; }
+.card-media {
+  min-height: 150px; }
+  .card-media .card-img-overlay {
+    padding: 5px;
+    z-index: 1000;
+    background: -webkit-linear-gradient(top, rgba(70, 70, 70, 0) 0%, rgba(70, 70, 70, 0.05) 60%, rgba(70, 70, 70, 0.15) 70%, rgba(70, 70, 70, 0.4) 100%);
+    background: linear-gradient(to bottom, rgba(70, 70, 70, 0) 0%, rgba(70, 70, 70, 0.05) 60%, rgba(70, 70, 70, 0.15) 70%, rgba(70, 70, 70, 0.4) 100%); }
+  .card-media .card-title {
+    margin-bottom: 0; }
 
 @media (max-width: 543px) {
   .card-columns {
