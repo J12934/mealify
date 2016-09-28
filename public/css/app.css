@@ -5117,9 +5117,15 @@ a.text-danger:focus, a.text-danger:hover {
     -moz-column-count: 3;
     column-count: 3; } }
 
-footer {
+.footer {
+  width: 100%;
+  background-color: #fff;
   margin-top: 25px;
   padding-top: 25px;
   padding-bottom: 15px; }
+
+@media (min-width: 768px) {
+  article {
+    min-height: calc(100vh - 235px); } }
 
 /*# sourceMappingURL=app.css.map */

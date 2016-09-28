@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<article class="container">
     <div class="row flex-items-xs-center">
         <div class="col-md-8">
             <div class="card">
@@ -64,5 +64,5 @@
             </div>
         </div>
     </div>
-</div>
+</article>
 @endsection

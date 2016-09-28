@@ -66,28 +66,32 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Recipe Finder</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Your Recipes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Your Storage</a>
-                </li>
+                @if (Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Your Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Your Storage</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>
     @yield('content')
-    <footer class="container-fluid bg-white">
-        <div class="row flex-items-xs-center">
-            <div class="col-lg-2">
-                <img src="img/logo-with-text.svg" height="50" alt="">
-            </div>
-            <div class="col-lg-3">
-                <p>Copyright Hollenbach Industries</p>
-                <p>Created by Jannik Hollenbach and Finn Schwenck</p>
-            </div>
-            <div class="col-lg-3">
-                <p>Created for Neue Datenbankkonzepte, FH Kiel</p>
-                <p><a href="https://github.com/J12934/mealify">View on Github</a></p>
+    <footer class="footer">
+        <div class="container">
+            <div class="row flex-items-xs-center">
+                <div class="col-lg-4 text-xs-center text-lg-left">
+                    <img src="img/logo-with-text.svg" height="50" alt="">
+                </div>
+                <div class="col-lg-4 text-xs-center text-lg-left">
+                    <p>Copyright Hollenbach Industries</p>
+                    <p>Created by Jannik Hollenbach and Finn Schwenck</p>
+                </div>
+                <div class="col-lg-4 text-xs-center text-lg-left">
+                    <p>Created for Neue Datenbankkonzepte, FH Kiel</p>
+                    <p><a href="https://github.com/J12934/mealify">View on Github</a></p>
+                </div>
             </div>
         </div>
     </footer>

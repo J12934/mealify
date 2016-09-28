@@ -1,0 +1,5 @@
+@include media-breakpoint-up(md){
+  article{
+    min-height: calc(100vh - 235px);
+  }
+}

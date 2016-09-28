@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
               'image'       => 'http://static.chefkoch-cdn.de/ck.de/rezepte/111/111218/882693-960x720-lasagne-bolognese.jpg',
               'user_id'     => 1
           ],[
-              'name'        => 'Pfannkuchen',
+              'name'        => 'Pancake',
               'description' => '',
               'image'       => 'http://static.chefkoch-cdn.de/ck.de/rezepte/121/121438/723647-960x720-pfannenkuchen-pfannkuchen-pfannekuchen-eierkuchen.jpg',
               'user_id'     => 1

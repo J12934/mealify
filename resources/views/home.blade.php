@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<article class="container">
     <div class="row">
         <div class="col-lg-12">
             <h2>Discover new Recepies</h2>
@@ -20,5 +20,5 @@
         </div>
     </div>
 
-</div>
+</article>
 @endsection
