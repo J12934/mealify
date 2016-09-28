@@ -76,7 +76,21 @@
         </div>
     </nav>
     @yield('content')
-
+    <footer class="container-fluid bg-white">
+        <div class="row flex-items-xs-center">
+            <div class="col-lg-2">
+                <img src="img/logo-with-text.svg" height="50" alt="">
+            </div>
+            <div class="col-lg-3">
+                <p>Copyright Hollenbach Industries</p>
+                <p>Created by Jannik Hollenbach and Finn Schwenck</p>
+            </div>
+            <div class="col-lg-3">
+                <p>Created for Neue Datenbankkonzepte, FH Kiel</p>
+                <p><a href="https://github.com/J12934/mealify">View on Github</a></p>
+            </div>
+        </div>
+    </footer>
     <!-- Scripts -->
     <script src="js/app.js"></script>
 </body>

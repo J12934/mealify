@@ -5116,4 +5116,9 @@ a.text-danger:focus, a.text-danger:hover {
     -moz-column-count: 3;
     column-count: 3; } }
 
+footer {
+  margin-top: 25px;
+  padding-top: 25px;
+  padding-bottom: 15px; }
+
 /*# sourceMappingURL=app.css.map */
