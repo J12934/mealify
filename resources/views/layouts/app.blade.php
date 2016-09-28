@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <base href="{{ env('APP_URL', 'http://localhost/mealify/public') }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} {{ isset($name) ? ' | ' . $name : ''}}</title>
 
     <!-- Styles -->
     <link href="css/app.css" rel="stylesheet">

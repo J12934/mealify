@@ -1,13 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-.navbar {
-  margin-bottom: 15px; }
-
-.nav {
-  padding-top: 12px; }
-
-.bg-white {
-  background-color: #fff; }
-
 /*!
  * Bootstrap v4.0.0-alpha.4 (http://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
@@ -620,7 +611,7 @@ pre {
       max-width: 940px; } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px; } }
+      max-width: 1340px; } }
 
 .container-fluid {
   margin-left: auto;
@@ -5068,5 +5059,61 @@ a.text-danger:focus, a.text-danger:hover {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+.flex {
+  display: -webkit-box;
+  display: flex; }
+
+.bg-white {
+  background-color: #fff; }
+
+.text-white {
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(70, 70, 70, 0.4); }
+
+.navbar {
+  margin-bottom: 15px; }
+
+.nav {
+  padding-top: 12px; }
+
+.card-media .card-img-overlay {
+  padding: 5px;
+  z-index: 1000;
+  background: -webkit-linear-gradient(top, rgba(70, 70, 70, 0) 0%, rgba(70, 70, 70, 0.05) 60%, rgba(70, 70, 70, 0.15) 70%, rgba(70, 70, 70, 0.4) 100%);
+  background: linear-gradient(to bottom, rgba(70, 70, 70, 0) 0%, rgba(70, 70, 70, 0.05) 60%, rgba(70, 70, 70, 0.15) 70%, rgba(70, 70, 70, 0.4) 100%); }
+
+.card-media .card-title {
+  margin-bottom: 0; }
+
+@media (max-width: 543px) {
+  .card-columns {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1; } }
+
+@media (min-width: 544px) and (max-width: 767px) {
+  .card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2; } }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2; } }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .card-columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3; } }
+
+@media (min-width: 1200px) {
+  .card-columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3; } }
 
 /*# sourceMappingURL=app.css.map */

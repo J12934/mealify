@@ -5,16 +5,9 @@
 // Variables
 @import "variables";
 
-
-.navbar{
-  margin-bottom: 15px;
-}
-.nav{
-  padding-top: 12px;
-}
-
-.bg-white{
-  background-color: #fff;
-}
 // Bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";
+
+@import "utilities";
+@import "navbar";
+@import "card";

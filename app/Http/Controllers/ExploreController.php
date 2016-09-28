@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Recipe;
+
 class ExploreController extends Controller
 {
     /**
      *
      */
     public function index(){
-        return view('home');
+        $recipes = Recipe::take(10)->get();
+
+        return view('home', [
+            'name'    => 'explore',
+            'recipes' => $recipes
+        ]);
     }
 }
