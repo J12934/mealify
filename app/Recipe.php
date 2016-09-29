@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Recipe extends Model
 {
     protected $fillable = [ 'name', 'description', 'image' ];
+
+    public function user()
+    {
+        return $this->belongsTo( 'App\User' );
+    }
 }
