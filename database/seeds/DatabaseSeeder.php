@@ -23,8 +23,17 @@ class DatabaseSeeder extends Seeder
 
         Recipe::create( [
             'name'        => 'Restaurant-Style Zuppa Toscana',
-            'description' => 'Cook Stuff
-                            ### Enjoy your Meal!',
+            'description' => '<h6>Step 1</h6>
+<p>Heat oven to 300 degrees F (150 degrees C).</p>
+<h6>Step 2</h6>
+<p>Place sausage links onto a sheet pan and bake for 25 minutes, or until done. Cut links in half lengthwise, then cut at an angle into 1/2-inch slices.</p>
+<h6>Step 3</h6>
+<p>Place onions and bacon slices in a large saucepan and cook over medium heat until onions are almost clear. Remove bacon and crumble. Set aside.</p>
+<h6>Step 4</h6>
+<p>Add garlic to the onions and cook an additional 1 minute. Add chicken soup base, water, and potatoes, simmer 15 minutes.</p>
+<h6>Step 5</h6>
+<p>Add crumbled bacon, sausage, kale, and cream. Simmer 4 minutes and serve.</p>
+<h4>Enjoy your Meal!</h4>',
             'image'       => 'http://images.media-allrecipes.com/userphotos/720x405/1515920.jpg',
             'user_id'     => 1
         ] );
