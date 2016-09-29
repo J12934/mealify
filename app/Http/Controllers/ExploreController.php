@@ -16,7 +16,7 @@ class ExploreController extends Controller
     public function index(){
         $recipes = Recipe::take(6)->get();
 
-        return view('home', [
+        return view('explore.index', [
             'name'    => 'explore',
             'recipes' => $recipes
         ]);

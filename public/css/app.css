@@ -5106,7 +5106,10 @@ a.text-danger:focus, a.text-danger:hover {
   justify-content: center;
   text-align: center; }
 
-.media-card-caption:hover {
+.media-card-link:hover, .media-card-link:active {
+  text-decoration: none; }
+
+.media-card-link:hover .media-card-caption {
   background: rgba(5, 5, 5, 0.4); }
 
 .media-card-title {
@@ -5119,7 +5122,9 @@ a.text-danger:focus, a.text-danger:hover {
 .media-card-subtitle {
   font-size: 18px;
   color: #e6e6e6;
-  text-shadow: 0 0 2px rgba(160, 160, 160, 0.35); }
+  text-shadow: 0 0 2px rgba(160, 160, 160, 0.35);
+  margin-top: 2px;
+  margin-bottom: 0; }
 
 .footer {
   width: 100%;

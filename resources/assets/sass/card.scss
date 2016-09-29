@@ -21,7 +21,11 @@
     text-align: center;
 }
 
-.media-card-caption:hover{
+.media-card-link:hover, .media-card-link:active{
+    text-decoration: none;
+}
+
+.media-card-link:hover .media-card-caption{
     background: rgba(5, 5, 5, 0.4);
 }
 
@@ -36,4 +40,6 @@
     font-size: 18px;
     color: darken(#fff, 10%);
     text-shadow: 0 0 2px rgba(160, 160, 160, .35);
+    margin-top: 2px;
+    margin-bottom: 0;
 }

@@ -13,4 +13,7 @@
 
 Route::get('/', 'ExploreController@index');
 
+Route::get('recipe/', 'RecipeController@index')->name('recipe.index');
+Route::get('recipe/{id}', 'RecipeController@show')->name('recipe.show');
+
 Auth::routes();
