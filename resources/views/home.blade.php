@@ -4,19 +4,49 @@
 <article class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h2>Discover new Recepies</h2>
+            <h2>New Recipes</h2>
         </div>
+    </div>
+    <div class="row">
+        @foreach($recipes as $recipe)
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            @include('components.card', [
+                'title' => $recipe->name,
+                'image' => $recipe->image,
+                'user'  => $recipe->user->name,
+            ])
+        </div>
+        @endforeach
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-xs-center text-md-right">
+            <a href="#" class="disovery-link">
+                Discover more Recipes <span class="icon-arrow-right"></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-lg-12">
-            <div class="card-columns">
-                @foreach($recipes as $recipe)
-                    <div class="card card-media">
-                        <img class="card-img w-100" src="{{ $recipe->image }}" alt="Card image cap">
-                        <div class="card-img-overlay flex flex-items-xs-bottom">
-                            <h4 class="card-title text-white flex">{{ $recipe->name }}</h4>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <h2>New Meals</h2>
+        </div>
+    </div>
+    <div class="row">
+        @foreach($recipes as $recipe)
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            @include('components.card', [
+                'title' => $recipe->name,
+                'image' => $recipe->image,
+                'user'  => $recipe->user->name,
+            ])
+        </div>
+        @endforeach
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-xs-center text-md-right">
+            <a href="#" class="disovery-link">
+                Discover more Recipes <span class="icon-arrow-right"></span>
+            </a>
         </div>
     </div>
 

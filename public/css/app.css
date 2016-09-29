@@ -5060,6 +5060,14 @@ a.text-danger:focus, a.text-danger:hover {
   .hidden-print {
     display: none !important; } }
 
+.disovery-link {
+  color: #636b6f;
+  font-size: 24px; }
+
+.disovery-link:hover {
+  opacity: .5;
+  text-decoration: none; }
+
 .flex {
   display: -webkit-box;
   display: flex; }
@@ -5077,45 +5085,41 @@ a.text-danger:focus, a.text-danger:hover {
 .nav {
   padding-top: 12px; }
 
-.card-media {
-  min-height: 150px; }
-  .card-media .card-img-overlay {
-    padding: 5px;
-    z-index: 1000;
-    background: -webkit-linear-gradient(top, rgba(70, 70, 70, 0) 0%, rgba(70, 70, 70, 0.05) 60%, rgba(70, 70, 70, 0.15) 70%, rgba(70, 70, 70, 0.4) 100%);
-    background: linear-gradient(to bottom, rgba(70, 70, 70, 0) 0%, rgba(70, 70, 70, 0.05) 60%, rgba(70, 70, 70, 0.15) 70%, rgba(70, 70, 70, 0.4) 100%); }
-  .card-media .card-title {
-    margin-bottom: 0; }
+.media-card {
+  height: 200px;
+  background-size: cover; }
 
-@media (max-width: 543px) {
-  .card-columns {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1; } }
+.media-card-caption {
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  background: rgba(70, 70, 70, 0.4);
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center; }
 
-@media (min-width: 544px) and (max-width: 767px) {
-  .card-columns {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2; } }
+.media-card-caption:hover {
+  background: rgba(5, 5, 5, 0.4); }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .card-columns {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2; } }
+.media-card-title {
+  color: #fff;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.35);
+  display: -webkit-box;
+  display: flex;
+  margin: 0; }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-  .card-columns {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3; } }
-
-@media (min-width: 1200px) {
-  .card-columns {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3; } }
+.media-card-subtitle {
+  font-size: 18px;
+  color: #e6e6e6;
+  text-shadow: 0 0 2px rgba(160, 160, 160, 0.35); }
 
 .footer {
   width: 100%;
@@ -5127,5 +5131,325 @@ a.text-danger:focus, a.text-danger:hover {
 @media (min-width: 768px) {
   article {
     min-height: calc(100vh - 235px); } }
+
+@font-face {
+  font-family: 'gonzocons';
+  src: url("../fonts/gonzocons.eot");
+  src: url("../fonts/gonzocons.eot#iefix") format("embedded-opentype"), url("../fonts/gonzocons.ttf") format("truetype"), url("../fonts/gonzocons.woff") format("woff"), url("../fonts/gonzocons.svg#gonzocons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'gonzocons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-antenna:before {
+  content: "\e900"; }
+
+.icon-archive:before {
+  content: "\e901"; }
+
+.icon-arrow-down:before {
+  content: "\e902"; }
+
+.icon-arrow-left:before {
+  content: "\e903"; }
+
+.icon-arrow-right:before {
+  content: "\e904"; }
+
+.icon-arrow-up:before {
+  content: "\e905"; }
+
+.icon-article:before {
+  content: "\e906"; }
+
+.icon-at:before {
+  content: "\e907"; }
+
+.icon-attachment:before {
+  content: "\e908"; }
+
+.icon-award:before {
+  content: "\e909"; }
+
+.icon-behance:before {
+  content: "\e90a"; }
+
+.icon-book:before {
+  content: "\e90b"; }
+
+.icon-bookmark:before {
+  content: "\e90c"; }
+
+.icon-brackets:before {
+  content: "\e90d"; }
+
+.icon-browser:before {
+  content: "\e90e"; }
+
+.icon-cart:before {
+  content: "\e90f"; }
+
+.icon-category:before {
+  content: "\e910"; }
+
+.icon-chat:before {
+  content: "\e911"; }
+
+.icon-check:before {
+  content: "\e912"; }
+
+.icon-close:before {
+  content: "\e913"; }
+
+.icon-cloud:before {
+  content: "\e914"; }
+
+.icon-code:before {
+  content: "\e915"; }
+
+.icon-coffee:before {
+  content: "\e916"; }
+
+.icon-commit:before {
+  content: "\e917"; }
+
+.icon-database:before {
+  content: "\e918"; }
+
+.icon-date:before {
+  content: "\e919"; }
+
+.icon-document:before {
+  content: "\e91a"; }
+
+.icon-down:before {
+  content: "\e91b"; }
+
+.icon-download:before {
+  content: "\e91c"; }
+
+.icon-dribbble:before {
+  content: "\e91d"; }
+
+.icon-email:before {
+  content: "\e91e"; }
+
+.icon-eye:before {
+  content: "\e91f"; }
+
+.icon-facebook:before {
+  content: "\e920"; }
+
+.icon-file:before {
+  content: "\e921"; }
+
+.icon-flickr:before {
+  content: "\e922"; }
+
+.icon-forbidden:before {
+  content: "\e923"; }
+
+.icon-garbage:before {
+  content: "\e924"; }
+
+.icon-gear:before {
+  content: "\e925"; }
+
+.icon-github:before {
+  content: "\e926"; }
+
+.icon-googleplus:before {
+  content: "\e927"; }
+
+.icon-graph:before {
+  content: "\e928"; }
+
+.icon-grid:before {
+  content: "\e929"; }
+
+.icon-hamburger:before {
+  content: "\e92a"; }
+
+.icon-heart:before {
+  content: "\e92b"; }
+
+.icon-home:before {
+  content: "\e92c"; }
+
+.icon-hourglass:before {
+  content: "\e92d"; }
+
+.icon-html5:before {
+  content: "\e92e"; }
+
+.icon-idea:before {
+  content: "\e92f"; }
+
+.icon-image:before {
+  content: "\e930"; }
+
+.icon-instagram:before {
+  content: "\e931"; }
+
+.icon-kebab:before {
+  content: "\e932"; }
+
+.icon-key:before {
+  content: "\e933"; }
+
+.icon-lab:before {
+  content: "\e934"; }
+
+.icon-left:before {
+  content: "\e935"; }
+
+.icon-like:before {
+  content: "\e936"; }
+
+.icon-link:before {
+  content: "\e937"; }
+
+.icon-linkedin:before {
+  content: "\e938"; }
+
+.icon-list:before {
+  content: "\e939"; }
+
+.icon-location:before {
+  content: "\e93a"; }
+
+.icon-map:before {
+  content: "\e93b"; }
+
+.icon-megaphone:before {
+  content: "\e93c"; }
+
+.icon-microphone:before {
+  content: "\e93d"; }
+
+.icon-mobile:before {
+  content: "\e93e"; }
+
+.icon-monitor:before {
+  content: "\e93f"; }
+
+.icon-music:before {
+  content: "\e940"; }
+
+.icon-network:before {
+  content: "\e941"; }
+
+.icon-paper:before {
+  content: "\e942"; }
+
+.icon-performance:before {
+  content: "\e943"; }
+
+.icon-phone:before {
+  content: "\e944"; }
+
+.icon-photo:before {
+  content: "\e945"; }
+
+.icon-pin:before {
+  content: "\e946"; }
+
+.icon-pinterest:before {
+  content: "\e947"; }
+
+.icon-portfolio:before {
+  content: "\e948"; }
+
+.icon-power:before {
+  content: "\e949"; }
+
+.icon-process:before {
+  content: "\e94a"; }
+
+.icon-project:before {
+  content: "\e94b"; }
+
+.icon-quote:before {
+  content: "\e94c"; }
+
+.icon-right:before {
+  content: "\e94d"; }
+
+.icon-rss:before {
+  content: "\e94e"; }
+
+.icon-search:before {
+  content: "\e94f"; }
+
+.icon-send:before {
+  content: "\e950"; }
+
+.icon-share:before {
+  content: "\e951"; }
+
+.icon-sitemap:before {
+  content: "\e952"; }
+
+.icon-skype:before {
+  content: "\e953"; }
+
+.icon-star:before {
+  content: "\e954"; }
+
+.icon-stats:before {
+  content: "\e955"; }
+
+.icon-tag:before {
+  content: "\e956"; }
+
+.icon-text:before {
+  content: "\e957"; }
+
+.icon-tool:before {
+  content: "\e958"; }
+
+.icon-tumblr:before {
+  content: "\e959"; }
+
+.icon-twitter:before {
+  content: "\e95a"; }
+
+.icon-up:before {
+  content: "\e95b"; }
+
+.icon-upload:before {
+  content: "\e95c"; }
+
+.icon-url:before {
+  content: "\e95d"; }
+
+.icon-user:before {
+  content: "\e95e"; }
+
+.icon-vector:before {
+  content: "\e95f"; }
+
+.icon-video:before {
+  content: "\e960"; }
+
+.icon-vimeo:before {
+  content: "\e961"; }
+
+.icon-wordpress:before {
+  content: "\e962"; }
+
+.icon-youtube:before {
+  content: "\e963"; }
 
 /*# sourceMappingURL=app.css.map */

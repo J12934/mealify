@@ -42,7 +42,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
+                            <span class="icon-user"></span> {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu">
                             <a href="{{ url('/logout') }}"
