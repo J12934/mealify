@@ -68,7 +68,7 @@
                 </li>
                 @if (Auth::check())
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Your Recipes</a>
+                        <a class="nav-link" href="{{ route('user.recipes') }}">Your Recipes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Your Storage</a>

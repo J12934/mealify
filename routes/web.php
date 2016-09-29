@@ -16,4 +16,6 @@ Route::get('/', 'ExploreController@index');
 Route::get('recipe/', 'RecipeController@index')->name('recipe.index');
 Route::get('recipe/{id}', 'RecipeController@show')->name('recipe.show');
 
+Route::get('user/recipes', 'RecipeController@indexUserRecipes')->name('user.recipes');
+
 Auth::routes();
