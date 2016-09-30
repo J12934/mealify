@@ -17,6 +17,8 @@ class CreateMealRecipeTable extends Migration
             $table->integer( 'meal_id' )->unsigned();
             $table->integer( 'recipe_id' )->unsigned();
 
+            $table->string( 'title', 255)->nullable()->comment('A descriptive Title for the current dish');
+
             $table->timestamps();
 
             $table->foreign( 'meal_id' )->references( 'id' )->on( 'meals' );

@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Recipe extends Model
+class Meal extends Model
 {
     protected $fillable = [
         'name',
-        'description',
-        'image',
+        'description'
     ];
 
     /**
@@ -31,8 +30,8 @@ class Recipe extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function meals()
+    public function recipes()
     {
-        return $this->belongsToMany( 'App\Meal' );
+        return $this->belongsToMany( 'App\Recipe' )->withPivot( 'title' );
     }
 }

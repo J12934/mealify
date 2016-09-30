@@ -34,4 +34,12 @@ class User extends Authenticatable
     {
         return $this->hasMany( 'App\Recipe' );
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function meals()
+    {
+        return $this->hasMany( 'App\Meal' );
+    }
 }

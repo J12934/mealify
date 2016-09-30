@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 use App\User;
 use App\Recipe;
+use App\Meal;
 
 class DatabaseSeeder extends Seeder
 {
@@ -85,5 +86,16 @@ class DatabaseSeeder extends Seeder
             'image'       => 'http://static.chefkoch-cdn.de/ck.de/rezepte/131/131654/929437-960x720-k-sekuchen-von-tante-gertrud.jpg',
             'user_id'     => 1
         ] );
+
+        Meal::create( [
+            'name' => 'Small Menue for 4 People',
+            'description' => '',
+            'user_id' => 1
+        ])->recipes()
+            ->sync([
+            1 => [ 'title' => 'First Dish'],
+            2 => [ 'title' => 'Second Dish'],
+            3 => [ 'title' => 'Third Dish']
+        ]);
     }
 }
