@@ -89,13 +89,25 @@ class DatabaseSeeder extends Seeder
 
         Meal::create( [
             'name' => 'Small Menue for 4 People',
-            'description' => '',
+            'description' => 'One of my favorites',
             'user_id' => 1
         ])->recipes()
             ->sync([
             1 => [ 'title' => 'First Dish'],
             2 => [ 'title' => 'Second Dish'],
             3 => [ 'title' => 'Third Dish']
+        ]);
+
+        Meal::create( [
+            'name' => 'Large Menue for 6 People',
+            'description' => 'Yummy!',
+            'user_id' => 1
+        ])->recipes()
+            ->sync([
+            6 => [ 'title' => 'First Dish'],
+            1 => [ 'title' => 'Second Dish'],
+            7 => [ 'title' => 'Third Dish'],
+            4 => [ 'title' => 'Fourth Dish'],
         ]);
     }
 }

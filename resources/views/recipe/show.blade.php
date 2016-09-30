@@ -29,5 +29,14 @@
                 {{-- TODO --}}
             </div>
         </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <a type="button" class="btn btn-secondary btn-lg btn-block"><span class="icon-article"></span> Generate Shopping List</a>
+            </div>
+            <div class="col-lg-6">
+                <a type="button" class="btn btn-secondary btn-lg btn-block"><span class="icon-archive"></span> Take Item from Storage</a>
+            </div>
+        </div>
     </article>
 @endsection
