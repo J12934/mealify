@@ -34,4 +34,14 @@ class Meal extends Model
     {
         return $this->belongsToMany( 'App\Recipe' )->withPivot( 'title' );
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function ingredients()
+    {
+        return $this->belongsToMany( 'App\Ingredient' )->withPivot( 'amount' );
+    }
+
+
 }

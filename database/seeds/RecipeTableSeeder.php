@@ -51,7 +51,21 @@ class RecipeTableSeeder extends Seeder
             'description' => $faker->sentences($numberOfSentences, true),
             'image'       => 'http://static.chefkoch-cdn.de/ck.de/rezepte/48/48759/740515-960x720-american-double-choc-brownies.jpg',
             'user_id'     => 1
-        ] );
+        ] )->ingredients()->sync([
+            1 => [
+                'amount' => 100,
+            ],
+            2 => [
+                'amount' => 300,
+            ],
+            4 => [
+                'amount' => 150,
+            ],
+            5 => [
+                'amount' => 400,
+            ],
+        ]);
+
         Recipe::create( [
             'name'        => 'Tomato Soup',
             'description' => $faker->sentences($numberOfSentences, true),

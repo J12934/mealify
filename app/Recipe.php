@@ -20,6 +20,11 @@ class Recipe extends Model
         'updated_at',
     ];
 
+    public function getActualPriceAttribute()
+    {
+        return $this->ingredients->sum('actual_price');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -34,5 +39,13 @@ class Recipe extends Model
     public function meals()
     {
         return $this->belongsToMany( 'App\Meal' );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function ingredients()
+    {
+        return $this->belongsToMany( 'App\Ingredient' )->withPivot( 'amount' );
     }
 }

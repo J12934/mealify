@@ -17,7 +17,9 @@ class CreateIngredientsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string( 'name' );
-            $table->string( 'unit' );
+            $table->string( 'unit' )->comment( 'Name of the Unit the Ingredient is measured in.' );
+            $table->decimal( 'price' )->comment( 'The price of the Ingredient.' );
+            $table->decimal( 'count_by' )->comment( 'Determines the amount of the Ingredient the Price should be for.' );
         });
     }
 

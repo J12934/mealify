@@ -26,6 +26,19 @@
             </div>
             <div class="col-lg-3">
                 <h3>Ingredients</h3>
+                <ul class="list-unstyled">
+                    @foreach($recipe->ingredients as $ingredient)
+                    <li>
+                        <strong>{{ $ingredient->name }}</strong>
+                        <p>{{ $ingredient->pivot->amount }}{{ $ingredient->unit }}, ~{{ $ingredient->actual_price }}€</p>
+                    </li>
+                    @endforeach
+                    <hr>
+                    <li>
+                        <strong>Total Costs:</strong> ~{{ $recipe->actual_price }}€
+                    </li>
+                </ul>
+
                 {{-- TODO --}}
             </div>
         </div>
