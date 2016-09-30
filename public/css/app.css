@@ -5126,6 +5126,20 @@ a.text-danger:focus, a.text-danger:hover {
   margin-top: 2px;
   margin-bottom: 0; }
 
+.card-row {
+  margin: 0;
+  background-color: rgba(128, 128, 128, 0.3); }
+  .card-row .card-row-header {
+    text-align: center; }
+    .card-row .card-row-header .card-row-heading {
+      font-size: 1.5rem;
+      margin-bottom: 2px; }
+    .card-row .card-row-header .card-row-subtitle {
+      font-size: 1rem;
+      margin-bottom: 2px; }
+  .card-row .col-xs {
+    padding: 0; }
+
 .footer {
   width: 100%;
   background-color: #fff;
