@@ -13,7 +13,7 @@ class CreateCategoryRecipeTable extends Migration
      */
     public function up()
     {
-        Schema::create('category-recipe', function (Blueprint $table) {
+        Schema::create('category_recipe', function (Blueprint $table) {
             $table->integer( 'category_id' )->unsigned();
             $table->integer( 'recipe_id' )->unsigned();
 
@@ -33,6 +33,6 @@ class CreateCategoryRecipeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category-recipe');
+        Schema::dropIfExists('category_recipe');
     }
 }
