@@ -38,5 +38,15 @@ class MealTableSeeder extends Seeder
                 7 => [ 'title' => 'Third Dish' ],
                 4 => [ 'title' => 'Fourth Dish' ],
             ] );
+
+        Meal::create( [
+            'name'        => 'Diabetics Favorite',
+            'description' => $faker->sentences( $numberOfSentences, true ),
+            'user_id'     => 1
+        ] )->recipes()
+            ->sync( [
+                4 => [ 'title' => 'First Dish' ],
+                6 => [ 'title' => 'Second Dish' ],
+            ] );
     }
 }

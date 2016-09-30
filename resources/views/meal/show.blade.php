@@ -13,6 +13,18 @@
             <div class="col-lg-3">
                 <h2>All Ingredients</h2>
                 {{-- TODO Meal Ingredients --}}
+                <ul class="list-unstyled">
+                    @foreach($meal->getIngredients() as $ingredient)
+                        <li>
+                            <strong>{{ $ingredient['name'] }}</strong>
+                            <p>{{ $ingredient['amount'] }}{{ $ingredient['unit'] }}, ~{{ $ingredient['price'] }}€</p>
+                        </li>
+                    @endforeach
+                    <hr>
+                    <li>
+                        <strong>Total Costs:</strong> ~{{ $meal->actual_price }}€
+                    </li>
+                </ul>
             </div>
         </div>
         <hr>

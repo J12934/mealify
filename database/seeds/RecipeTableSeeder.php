@@ -39,7 +39,23 @@ class RecipeTableSeeder extends Seeder
             'description' => $faker->sentences($numberOfSentences, true),
             'image'       => 'http://static.chefkoch-cdn.de/ck.de/rezepte/121/121438/723647-960x720-pfannenkuchen-pfannkuchen-pfannekuchen-eierkuchen.jpg',
             'user_id'     => 1
-        ] );
+        ] )->ingredients()->sync([
+            1 => [
+                'amount' => 100,
+            ],
+            2 => [
+                'amount' => 300,
+            ],
+            3 => [
+                'amount' => 4,
+            ],
+            4 => [
+                'amount' => 400,
+            ],
+            6 => [
+                'amount' => 0.8,
+            ],
+        ]);;
         Recipe::create( [
             'name'        => 'Big Kahuna Burger',
             'description' => $faker->sentences($numberOfSentences, true),

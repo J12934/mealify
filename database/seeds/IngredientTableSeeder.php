@@ -47,5 +47,12 @@ class IngredientTableSeeder extends Seeder
             'price'    => 1.2,
             'count_by' => 100
         ] );
+
+        Ingredient::create( [
+            'name'     => 'Milk',
+            'unit'     => 'l',
+            'price'    => 0.6,
+            'count_by' => 1
+        ] );
     }
 }

@@ -38,8 +38,6 @@
                         <strong>Total Costs:</strong> ~{{ $recipe->actual_price }}€
                     </li>
                 </ul>
-
-                {{-- TODO --}}
             </div>
         </div>
         <hr>

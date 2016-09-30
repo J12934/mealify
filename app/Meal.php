@@ -19,6 +19,31 @@ class Meal extends Model
         'updated_at',
     ];
 
+    public function getActualPriceAttribute()
+    {
+        return $this
+            ->recipes
+            ->sum('actual_price');
+    }
+
+    public function getIngredients()
+    {
+        return $this
+            ->recipes
+            ->flatMap(function ($item){
+                return $item->ingredients;
+            })
+            ->groupBy('id')
+            ->map(function ($item){
+                return [
+                    'name' => $item[0]->name,
+                    'unit' => $item[0]->unit,
+                    'amount' => $item->sum('pivot.amount'),
+                    'price' => $item->sum('actual_price'),
+                ] ;
+            });
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -34,14 +59,4 @@ class Meal extends Model
     {
         return $this->belongsToMany( 'App\Recipe' )->withPivot( 'title' );
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function ingredients()
-    {
-        return $this->belongsToMany( 'App\Ingredient' )->withPivot( 'amount' );
-    }
-
-
 }
