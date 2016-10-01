@@ -42,4 +42,12 @@ class User extends Authenticatable
     {
         return $this->hasMany( 'App\Meal' );
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function storages()
+    {
+        return $this->hasMany( 'App\Storage' );
+    }
 }

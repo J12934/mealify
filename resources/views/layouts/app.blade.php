@@ -71,7 +71,7 @@
                         <a class="nav-link" href="{{ route('user.recipes') }}">Your Recipes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Your Storage</a>
+                        <a class="nav-link" href="{{ route('storage.index') }}">Your Storage</a>
                     </li>
                 @endif
             </ul>

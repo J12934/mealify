@@ -17,6 +17,8 @@ class CreateIngredientStorageTable extends Migration
             $table->integer( 'ingredient_id' )->unsigned();
             $table->integer( 'storage_id' )->unsigned();
 
+            $table->decimal( 'amount' )->comment('Amount of the ingredient stored in the storage unit.');
+
             $table->timestamps();
 
             $table->foreign( 'ingredient_id' )->references( 'id' )->on( 'ingredients' );
