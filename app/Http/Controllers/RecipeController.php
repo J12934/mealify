@@ -41,7 +41,9 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view('recipe.create', [
+            'name' => 'share a recipe'
+        ]);
     }
 
     /**
@@ -52,7 +54,27 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $values = $request->all();
+
+        //Map the Ingredients to get them into the right Format
+        $ingredients = collect($values['ingredients'])->map(function($item){
+            return [
+                'amount' => $item
+            ];
+        })->toArray();
+
+        //Create the Recipe and attach it to the current User
+        $recipe = Auth::user()->recipes()->create([
+            'name' => $values['name'],
+            'image' => $values['image'],
+            'description' => $values['description'],
+        ]);
+
+        //Adding the Ingredients to the Recipe
+        $recipe->ingredients()->sync($ingredients);
+
+        //Redirecting to the newly created Recipe
+        return redirect()->route('recipe.show', $recipe->id);
     }
 
     /**

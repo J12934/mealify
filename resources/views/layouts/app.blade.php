@@ -73,6 +73,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('storage.index') }}">Your Storage</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('recipe.create') }}">Share a Recipe</a>
+                    </li>
                 @endif
             </ul>
         </div>

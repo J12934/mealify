@@ -13,6 +13,10 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
+import Multiselect from 'vue-multiselect';
+
+Vue.component('multiselect', Multiselect);
+Vue.component('IngredientSelector', require('./components/IngredientSelector.vue'));
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({

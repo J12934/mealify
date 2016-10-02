@@ -26,10 +26,6 @@
                     ])
                 </div>
             @endforeach
-            <div class="col-lg-12 text-xs-center">
-                {{-- TODO make Create Option more visible --}}
-                <a class="disovery-link" href=""><span class="icon-idea"></span> Share more recipes</a>
-            </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-xs-center">
