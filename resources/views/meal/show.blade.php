@@ -12,7 +12,6 @@
             </div>
             <div class="col-lg-3">
                 <h2>All Ingredients</h2>
-                {{-- TODO Meal Ingredients --}}
                 <ul class="list-unstyled">
                     @foreach($meal->generateIngredientList() as $ingredient)
                         <li>
@@ -27,6 +26,7 @@
                 </ul>
             </div>
         </div>
+        @if(Auth::check())
         <hr>
         <div class="row">
             <div class="col-lg-6">
@@ -36,5 +36,6 @@
                 <a type="button" class="btn btn-secondary btn-lg btn-block"><span class="icon-archive"></span> Take Item from Storage</a>
             </div>
         </div>
+        @endif
     </article>
 @endsection
