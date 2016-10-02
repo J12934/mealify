@@ -100,5 +100,6 @@
     </footer>
     <!-- Scripts -->
     <script src="js/app.js"></script>
+    @yield('custom-scripts')
 </body>
 </html>
