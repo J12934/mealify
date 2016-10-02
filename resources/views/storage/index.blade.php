@@ -9,24 +9,32 @@
         </div>
         <div class="row">
             @foreach($user->storages as $storage)
-            <div class="col-lg-4 col-md-6 col-xs-12">
-                <div class="card">
-                    <div class="card-block">
-                        <h4 class="card-title"><h3>{{ $storage->name }}</h3></h4>
-                    </div>
-                    <div class="list-group list-group-flush">
-                        @foreach($storage->ingredients as $ingredient)
-                            <a class="list-group-item" href="{{ route('storage.ingredient.edit', [ 'storage' => $storage->id, 'ingredient' => $ingredient->id ]) }}">
-                                {{ $ingredient->name }}
-                                <span class="pull-xs-right">
-                                    {{ (float) $ingredient->pivot->amount }}{{$ingredient->unit}}
-                                </span>
-                            </a>
-                        @endforeach
-                    </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <a href="{{ route('storage.edit', $storage->id ) }}" class="disovery-link">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 class="card-title">
+                                    {{ $storage->name }}
+                                    <span class="pull-xs-right"><span class="icon-arrow-right"></span></span>
+                                </h4>
+                                <small class="tag tag-info">{{ $storage->ingredients->count() }} Ingredients</small>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
             @endforeach
+            <div class="col-lg-4 col-md-6 col-xs-12">
+                <a href="{{ route('storage.create' ) }}" class="disovery-link">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">
+                                Create a new Storage
+                                <span class="pull-xs-right"><span class="icon-arrow-right"></span></span>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     </article>
 @endsection

@@ -24,27 +24,61 @@ class StorageController extends Controller
         $user = Auth::user();
 
         return view('storage.index', [
-           'user' => $user
+            'name' => 'your storage',
+            'user' => $user
         ]);
     }
 
-    public function editIngredient($storage, $ingredient)
+    public function create()
     {
-        $storage = Storage::findOrFail($storage);
-        $ingredient = $storage->ingredients()->findOrFail($ingredient);
-
-        return view('storage.ingredient.edit', [
-            'storage' => $storage,
-            'ingredient' => $ingredient
+        return view('storage.create', [
+            'name' => 'new storage'
         ]);
     }
 
-    public function updateIngredient($storage, $ingredient, Request $request)
+    public function store(Request $request)
     {
-        $ingredient = Storage::findOrFail($storage)
-            ->ingredients()
-            ->updateExistingPivot($ingredient, [ 'amount' => $request['amount']]);
+        //Map the Ingredients to get them into the right Format
+        $ingredients = collect($request->ingredients)->map(function($item){
+            return [
+                'amount' => $item
+            ];
+        })->toArray();
+
+        $storage = Auth::user()->storages()->create([
+            'name' => $request->name
+        ]);
+
+        $storage->ingredients()->sync($ingredients);
 
         return redirect()->route( 'storage.index' );
+    }
+
+    public function edit($storage)
+    {
+        $storage = Storage::findOrFail($storage);
+
+        return view('storage.edit', [
+            'name' => 'edit storage',
+            'storage' => $storage
+        ]);
+    }
+
+    public function update($storage, Request $request)
+    {
+        $storage = Storage::findOrFail($storage);
+        $storage->name = $request->name;
+        $storage->save();
+
+        //Map the Ingredients to get them into the right Format
+        $ingredients = collect($request->ingredients)->map(function($item){
+            return [
+                'amount' => $item
+            ];
+        })->toArray();
+
+        $storage->ingredients()->sync($ingredients);
+
+        return redirect()->route( 'storage.edit', $storage->id );
     }
 }
