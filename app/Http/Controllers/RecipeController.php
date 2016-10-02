@@ -57,12 +57,8 @@ class RecipeController extends Controller
     {
         $values = $request->all();
 
-        //Map the Ingredients to get them into the right Format
-        $ingredients = collect($values['ingredients'])->map(function($item){
-            return [
-                'amount' => $item
-            ];
-        })->toArray();
+
+
 
         //Create the Recipe and attach it to the current User
         $recipe = Auth::user()->recipes()->create([
@@ -71,8 +67,25 @@ class RecipeController extends Controller
             'description' => $values['description'],
         ]);
 
-        //Adding the Ingredients to the Recipe
-        $recipe->ingredients()->sync($ingredients);
+        if(isset( $values['ingredients'])){
+            //Map the Ingredients to get them into the right Format
+            $ingredients = collect($values['ingredients'])->map(function($item){
+                return [
+                    'amount' => $item
+                ];
+            })->toArray();
+
+            //Adding the Ingredients to the Recipe
+            $recipe->ingredients()->sync($ingredients);
+        }
+
+        if(isset( $values['category'])){
+            $categories = collect($values['category'])->keys()->toArray();
+
+            //Adding the Categories to the Recipe
+            $recipe->categories()->sync($categories);
+        }
+
 
         //Redirecting to the newly created Recipe
         return redirect()->route('recipe.show', $recipe->id);
@@ -133,13 +146,6 @@ class RecipeController extends Controller
 
         $values = $request->all();
 
-        //Map the Ingredients to get them into the right Format
-        $ingredients = collect($values['ingredients'])->map(function($item){
-            return [
-                'amount' => $item
-            ];
-        })->toArray();
-
         //Create the Recipe and attach it to the current User
         $recipe->update([
             'name' => $values['name'],
@@ -147,8 +153,24 @@ class RecipeController extends Controller
             'description' => $values['description'],
         ]);
 
-        //Adding the Ingredients to the Recipe
-        $recipe->ingredients()->sync($ingredients);
+        if(isset( $values['ingredients'])){
+            //Map the Ingredients to get them into the right Format
+            $ingredients = collect($values['ingredients'])->map(function($item){
+                return [
+                    'amount' => $item
+                ];
+            })->toArray();
+
+            //Adding the Ingredients to the Recipe
+            $recipe->ingredients()->sync($ingredients);
+        }
+
+        if(isset( $values['category'])){
+            $categories = collect($values['category'])->keys()->toArray();
+
+            //Adding the Categories to the Recipe
+            $recipe->categories()->sync($categories);
+        }
 
         //Redirecting to the newly created Recipe
         return redirect()->route('recipe.show', $recipe->id);

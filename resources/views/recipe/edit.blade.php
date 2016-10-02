@@ -4,7 +4,8 @@
     <article class="container">
         {{ Form::model( $recipe, ['route' => ['recipe.update', $recipe->id], 'method' => 'patch']) }}
         @include('recipe._form', [
-            'url' => env('APP_URL', 'http://localhost/mealify/public') . '/api/recipe/' . $recipe->id
+            'ingredientUrl' => env('APP_URL', 'http://localhost/mealify/public') . '/api/recipe/ingredients/' . $recipe->id,
+            'categoriesUrl' => env('APP_URL', 'http://localhost/mealify/public') . '/api/recipe/tags/' . $recipe->id
         ])
         <div class="row">
             <div class="col-lg-12">

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 use App\Ingredient;
 use App\Storage;
+use App\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,13 @@ Route::get('/ingredients/{query}', function ($query) {
 });
 
 /**
+ * Returns a list of categories matched by the search query
+ */
+Route::get('/categories/{query}', function ($query) {
+    return Category::where('name', 'like', '%' . $query . '%')->select('id', 'name')->get();
+});
+
+/**
  * Returns a list of ingredients stored in the storage unit
  * I know the access isn't restricted but do i really care?
  */
@@ -41,9 +49,8 @@ Route::get('/storage/{id}', function ($id) {
 
 /**
  * Returns a list of ingredients used in a Recipe
- * I know the access isn't restricted but do i really care?
  */
-Route::get('/recipe/{id}', function ($id) {
+Route::get('/recipe/ingredients/{id}', function ($id) {
     return Recipe::findOrFail($id)->ingredients->map(function($item){
         return [
             'id' => $item->id,
@@ -52,4 +59,11 @@ Route::get('/recipe/{id}', function ($id) {
             'amount' => $item->pivot->amount
         ];
     });
+});
+
+/**
+ * Returns a list of ingredients used in a Recipe
+ */
+Route::get('/recipe/tags/{id}', function ($id) {
+    return Recipe::findOrFail($id)->categories()->select( 'id', 'name')->get();
 });

@@ -17,6 +17,7 @@ import Multiselect from 'vue-multiselect';
 
 Vue.component('multiselect', Multiselect);
 Vue.component('IngredientSelector', require('./components/IngredientSelector.vue'));
+Vue.component('CategorySelector', require('./components/CategorySelector.vue'));
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({

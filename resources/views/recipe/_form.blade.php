@@ -10,6 +10,11 @@
             {!! Form::text('name', null, [ 'class' => 'form-control' ]) !!}
         </div>
         <div class="form-group">
+            <category-selector
+                @if(isset($categoriesUrl)) api="{{$categoriesUrl}}" @endif>
+            </category-selector>
+        </div>
+        <div class="form-group">
             {!! Form::label('image', 'Image URL') !!}
             {!! Form::text('image', null, [ 'class' => 'form-control' ]) !!}
         </div>
@@ -22,7 +27,7 @@
         <h3>Ingredients</h3>
         <ul class="list-unstyled">
             <ingredient-selector
-                @if(isset($url))api="{{ $url }}@endif">
+                @if(isset($ingredientUrl)) api="{{ $ingredientUrl }}" @endif>
             </ingredient-selector>
         </ul>
     </div>
