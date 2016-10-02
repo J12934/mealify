@@ -10,20 +10,9 @@
         <div class="row">
             @foreach($recipes as $recipe)
                 <div class="col-xs-12 col-md-6 col-lg-4">
-                    @include('components.card', [
-                        'title' => $recipe->name,
-                        'image' => $recipe->image,
-                        'subtitles' => [
-                                    [
-                                        'icon' => '<span class="icon-user"></span>',
-                                        'text' => $recipe->user->name
-                                    ],[
-                                        'icon' => '<span class="icon-date"></span> Created ',
-                                        'text' => $recipe->created_at->diffForHumans()
-                                    ]
-                                ],
-                        'url'   => route('recipe.show', $recipe->id)
-                    ])
+                    <a class="media-card-link" href="{{ route('recipe.show', $recipe->id) }}">
+                        @include('components.card')
+                    </a>
                 </div>
             @endforeach
         </div>

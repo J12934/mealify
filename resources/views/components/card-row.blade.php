@@ -5,20 +5,9 @@
     </div>
     @foreach($meal->recipes as $recipe)
         <div class="col-xs">
-            @include('components.card', [
-            'title' => $recipe->pivot->title,
-            'image' => $recipe->image,
-            'subtitles' => [
-                        [
-                            'icon' => '<span class="icon-user"></span>',
-                            'text' => $recipe->user->name
-                        ],[
-                            'icon' => '<span class="icon-date"></span> Created ',
-                            'text' => $recipe->created_at->diffForHumans()
-                        ]
-                    ],
-            'url'   => route('recipe.show', $recipe->id)
-            ])
+            <a href="{{ route('recipe.show', $recipe->id) }}" class="media-card-link">
+                @include('components.card')
+            </a>
         </div>
     @endforeach
 </div>

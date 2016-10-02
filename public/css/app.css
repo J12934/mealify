@@ -5481,4 +5481,9 @@ a.text-danger:focus, a.text-danger:hover {
 .icon-youtube:before {
   content: "\e963"; }
 
+.category-tag {
+  color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(115, 115, 115, 0.9);
+  padding: 5px; }
+
 /*# sourceMappingURL=app.css.map */

@@ -49,6 +49,14 @@ class Recipe extends Model
         return $this->belongsToMany( 'App\Ingredient' )->withPivot( 'amount' );
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
+    {
+        return $this->belongsToMany( 'App\Category' );
+    }
+
     public function isAllowedToBeSeenBy($user)
     {
         if ($user == null)

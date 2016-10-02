@@ -1,18 +1,14 @@
-@if(isset($url))
-    <a href="{{ $url }}" class="media-card-link">
-@endif
-        <div class="media-card" @if(isset($image)) style="background-image: url('{{ $image }}')" @endif>
-            <div class="media-card-caption">
-                @if(isset($title))
-                    <h4 class="media-card-title">{{ $title }}</h4>
-                @endif
-                @foreach($subtitles as $subtitle)
-                    <p class="media-card-subtitle">
-                        {!! $subtitle['icon'] !!} {{ $subtitle['text'] }}
-                    </p>
-                @endforeach
-            </div>
-        </div>
-@if(isset($url))
-    </a>
-@endif
+<div class="media-card" @if(isset($recipe->image)) style="background-image: url('{{ $recipe->image }}')" @endif>
+    <div class="media-card-caption">
+        <h4 class="media-card-title">{{ $recipe->name }}</h4>
+
+        <p class="media-card-subtitle">
+            <span class="icon-date"></span> {{ $recipe->created_at->diffForHumans() }}
+        </p>
+        <p class="media-card-subtitle">
+            @foreach($recipe->categories as $category)
+                <span class="tag category-tag">{{ $category->name }}</span>
+            @endforeach
+        </p>
+    </div>
+</div>
