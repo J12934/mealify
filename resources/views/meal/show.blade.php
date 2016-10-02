@@ -14,7 +14,7 @@
                 <h2>All Ingredients</h2>
                 {{-- TODO Meal Ingredients --}}
                 <ul class="list-unstyled">
-                    @foreach($meal->getIngredients() as $ingredient)
+                    @foreach($meal->generateIngredientList() as $ingredient)
                         <li>
                             <strong>{{ $ingredient['name'] }}</strong>
                             <p>{{ $ingredient['amount'] }}{{ $ingredient['unit'] }}, ~{{ $ingredient['price'] }}€</p>
@@ -30,7 +30,7 @@
         <hr>
         <div class="row">
             <div class="col-lg-6">
-                <a type="button" class="btn btn-secondary btn-lg btn-block"><span class="icon-article"></span> Generate Shopping List</a>
+                <a type="button" href="{{ route( 'shopping-list.meal', $meal->id ) }}" class="btn btn-secondary btn-lg btn-block"><span class="icon-article"></span> Generate Shopping List</a>
             </div>
             <div class="col-lg-6">
                 <a type="button" class="btn btn-secondary btn-lg btn-block"><span class="icon-archive"></span> Take Item from Storage</a>

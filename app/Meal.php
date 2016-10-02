@@ -2,10 +2,15 @@
 
 namespace App;
 
+use App\Interfaces\GeneratesIngredientList;
+
+use App\Traits\CompressesIngredientList;
 use Illuminate\Database\Eloquent\Model;
 
-class Meal extends Model
+class Meal extends Model implements GeneratesIngredientList
 {
+    use CompressesIngredientList;
+
     protected $fillable = [
         'name',
         'description'
@@ -26,24 +31,6 @@ class Meal extends Model
             ->sum('actual_price');
     }
 
-    public function getIngredients()
-    {
-        return $this
-            ->recipes
-            ->flatMap(function ($item){
-                return $item->ingredients;
-            })
-            ->groupBy('id')
-            ->map(function ($item){
-                return [
-                    'name' => $item[0]->name,
-                    'unit' => $item[0]->unit,
-                    'amount' => $item->sum('pivot.amount'),
-                    'price' => $item->sum('actual_price'),
-                ] ;
-            });
-    }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -58,5 +45,12 @@ class Meal extends Model
     public function recipes()
     {
         return $this->belongsToMany( 'App\Recipe' )->withPivot( 'title' );
+    }
+
+    function generateIngredientList()
+    {
+        return $this->compressIngredientList( $this->recipes->flatMap(function ($item){
+            return $item->generateIngredientList();
+        }) );
     }
 }

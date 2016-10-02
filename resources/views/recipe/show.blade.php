@@ -43,7 +43,7 @@
         <hr>
         <div class="row form-group">
             <div class="col-lg-6">
-                <a type="button" class="btn btn-secondary btn-lg btn-block"><span class="icon-article"></span> Generate Shopping List</a>
+                <a type="button" href="{{ route('shopping-list.recipe', $recipe->id) }}" class="btn btn-secondary btn-lg btn-block"><span class="icon-article"></span> Generate Shopping List</a>
             </div>
             <div class="col-lg-6">
                 <a type="button" class="btn btn-secondary btn-lg btn-block"><span class="icon-archive"></span> Take Item from Storage</a>

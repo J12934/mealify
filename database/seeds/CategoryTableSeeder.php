@@ -20,7 +20,7 @@ class CategoryTableSeeder extends Seeder
             'name' => 'main-dish'
         ]);
         Category::create([ //3
-            'name' => 'desert'
+            'name' => 'dessert'
         ]);
         Category::create([ //4
             'name' => 'cake'

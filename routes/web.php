@@ -31,4 +31,7 @@ Route::post('storage/', 'StorageController@store')->name('storage.store');
 Route::get('storage/{storage}', 'StorageController@edit')->name('storage.edit');
 Route::patch('storage/{storage}', 'StorageController@update')->name('storage.update');
 
+Route::get('shopping-list/recipe/{id}', 'ShoppingListController@generateFromRecipe')->name('shopping-list.recipe');
+Route::get('shopping-list/meal/{id}', 'ShoppingListController@generateFromMeal')->name('shopping-list.meal');
+
 Auth::routes();

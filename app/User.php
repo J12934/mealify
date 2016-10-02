@@ -2,12 +2,15 @@
 
 namespace App;
 
+use App\Interfaces\GeneratesIngredientList;
+
+use App\Traits\CompressesIngredientList;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements GeneratesIngredientList
 {
-    use Notifiable;
+    use Notifiable, CompressesIngredientList;
 
     /**
      * The attributes that are mass assignable.
@@ -49,5 +52,12 @@ class User extends Authenticatable
     public function storages()
     {
         return $this->hasMany( 'App\Storage' );
+    }
+
+    function generateIngredientList()
+    {
+        return $this->compressIngredientList( $this->storages->flatMap(function ($item){
+            return $item->generateIngredientList();
+        }) );
     }
 }
