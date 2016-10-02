@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::get('/ingredients/{query}', function ($query) {
+    return \App\Ingredient::where('name', 'like', '%' . $query . '%')->select('id', 'unit', 'name')->get();
+});
