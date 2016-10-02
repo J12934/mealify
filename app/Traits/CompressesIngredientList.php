@@ -16,6 +16,7 @@ trait CompressesIngredientList
                     'unit' => $item[0]['unit'],
                     'amount' => $item->sum('amount'),
                     'price' => $item[0]['price'],
+                    'count_by' => $item[0]['count_by']
                 ]) ;
             });
     }

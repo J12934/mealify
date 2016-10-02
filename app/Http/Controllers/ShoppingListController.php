@@ -38,13 +38,22 @@ class ShoppingListController extends Controller
 
     private function generateList(Collection $required, Collection $available)
     {
-        return $required->map(function($item) use ($available){
+        $list = $required->map(function($item) use ($available){
             if($available->contains('id', $item['id'])){
                 $item['amount'] -= $available[$item['id']]['amount'];
             }
             return $item;
         })->filter(function ($item){
             return $item['amount'] > 0;
+        })->map(function($item){
+            $item['absulute_price'] = ($item['amount'] / $item['count_by']) * $item['price'];
+
+            return $item;
         });
+
+        return [
+            'total_costs' => $list->sum('absulute_price'),
+            'list' => $list
+        ];
     }
 }

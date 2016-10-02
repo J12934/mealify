@@ -18,7 +18,8 @@ trait GenerateIngredientList
                 'name'   => $item->name,
                 'unit'   => $item->unit,
                 'price'  => $item->price,
-                'amount' => $item->pivot->amount
+                'amount' => $item->pivot->amount,
+                'count_by' => $item->count_by
             ]);
         } );
     }
