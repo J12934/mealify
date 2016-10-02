@@ -48,4 +48,11 @@ class Recipe extends Model
     {
         return $this->belongsToMany( 'App\Ingredient' )->withPivot( 'amount' );
     }
+
+    public function isAllowedToBeSeenBy($user)
+    {
+        if ($user == null)
+            return false;
+        return $user->id == $this['user_id'];
+    }
 }

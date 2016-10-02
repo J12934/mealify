@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Recipe;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -101,7 +102,17 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $recipe = Recipe::findOrFail($id);
+
+        //Redirect if the Recipe does not belong to the current User
+        if(!$recipe->isAllowedToBeSeenBy(Auth::user())){
+            return redirect()->route('explore')->withErrors( 'Unauthorized' );
+        }
+
+        return view('recipe.edit', [
+            'name' => 'edit ' . $recipe->name,
+            'recipe' => $recipe
+        ]);
     }
 
     /**
@@ -113,7 +124,34 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $recipe = Recipe::findOrFail($id);
+
+        //Redirect if the Recipe does not belong to the current User
+        if(!$recipe->isAllowedToBeSeenBy(Auth::user())){
+            return redirect()->route('explore')->withErrors( 'Unauthorized' );
+        }
+
+        $values = $request->all();
+
+        //Map the Ingredients to get them into the right Format
+        $ingredients = collect($values['ingredients'])->map(function($item){
+            return [
+                'amount' => $item
+            ];
+        })->toArray();
+
+        //Create the Recipe and attach it to the current User
+        $recipe->update([
+            'name' => $values['name'],
+            'image' => $values['image'],
+            'description' => $values['description'],
+        ]);
+
+        //Adding the Ingredients to the Recipe
+        $recipe->ingredients()->sync($ingredients);
+
+        //Redirecting to the newly created Recipe
+        return redirect()->route('recipe.show', $recipe->id);
     }
 
     /**

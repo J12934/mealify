@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', 'ExploreController@index');
+Route::get('/', 'ExploreController@index')->name('explore');
 
 Route::get('recipe/', 'RecipeController@index')->name('recipe.index');
 Route::get('recipe/create', 'RecipeController@create')->name('recipe.create');
+Route::get('recipe/{id}/update', 'RecipeController@edit')->name('recipe.edit');
+Route::patch('recipe/{id}', 'RecipeController@update')->name('recipe.update');
 Route::get('recipe/{id}', 'RecipeController@show')->name('recipe.show');
 Route::post('recipe/', 'RecipeController@store')->name('recipe.store');
 
