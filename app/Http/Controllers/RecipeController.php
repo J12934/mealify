@@ -55,37 +55,14 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $values = $request->all();
-
-
-
-
         //Create the Recipe and attach it to the current User
         $recipe = Auth::user()->recipes()->create([
-            'name' => $values['name'],
-            'image' => $values['image'],
-            'description' => $values['description'],
+            'name' => $request->input('name'),
+            'image' => $request->input('image'),
+            'description' => $request->input('description'),
         ]);
 
-        if(isset( $values['ingredients'])){
-            //Map the Ingredients to get them into the right Format
-            $ingredients = collect($values['ingredients'])->map(function($item){
-                return [
-                    'amount' => $item
-                ];
-            })->toArray();
-
-            //Adding the Ingredients to the Recipe
-            $recipe->ingredients()->sync($ingredients);
-        }
-
-        if(isset( $values['category'])){
-            $categories = collect($values['category'])->keys()->toArray();
-
-            //Adding the Categories to the Recipe
-            $recipe->categories()->sync($categories);
-        }
-
+        $this->updateRecipeRelationships( $recipe, $request);
 
         //Redirecting to the newly created Recipe
         return redirect()->route('recipe.show', $recipe->id);
@@ -144,33 +121,14 @@ class RecipeController extends Controller
             return redirect()->route('explore')->withErrors( 'Unauthorized' );
         }
 
-        $values = $request->all();
-
         //Create the Recipe and attach it to the current User
         $recipe->update([
-            'name' => $values['name'],
-            'image' => $values['image'],
-            'description' => $values['description'],
+            'name' => $request->input('name'),
+            'image' => $request->input('image'),
+            'description' => $request->input('description'),
         ]);
 
-        if(isset( $values['ingredients'])){
-            //Map the Ingredients to get them into the right Format
-            $ingredients = collect($values['ingredients'])->map(function($item){
-                return [
-                    'amount' => $item
-                ];
-            })->toArray();
-
-            //Adding the Ingredients to the Recipe
-            $recipe->ingredients()->sync($ingredients);
-        }
-
-        if(isset( $values['category'])){
-            $categories = collect($values['category'])->keys()->toArray();
-
-            //Adding the Categories to the Recipe
-            $recipe->categories()->sync($categories);
-        }
+        $this->updateRecipeRelationships( $recipe, $request);
 
         //Redirecting to the newly created Recipe
         return redirect()->route('recipe.show', $recipe->id);
@@ -185,5 +143,27 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function updateRecipeRelationships($recipe, Request $request)
+    {
+        if( $request->has('ingredients') ){
+            //Map the Ingredients to get them into the right Format
+            $ingredients = collect( $request->input('ingredients') )->map(function($item){
+                return [
+                    'amount' => $item
+                ];
+            })->toArray();
+
+            //Adding the Ingredients to the Recipe
+            $recipe->ingredients()->sync($ingredients);
+        }
+
+        if( $request->has('category') ){
+            $categories = collect( $request->input('category') )->keys()->toArray();
+
+            //Adding the Categories to the Recipe
+            $recipe->categories()->sync($categories);
+        }
     }
 }
