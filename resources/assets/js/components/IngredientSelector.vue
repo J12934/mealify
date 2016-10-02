@@ -3,7 +3,7 @@
         <div class="form-group" v-for="ingredient in ingredients">
             <label>{{ ingredient.name }}</label>
             <div class="input-group">
-                <input v-bind:name="'ingredients[' + ingredient.id + ']'" type="text" class="form-control">
+                <input  v-bind:value="ingredient.amount" v-bind:name="'ingredients[' + ingredient.id + ']'" type="text" class="form-control">
                 <span class="input-group-addon">{{ ingredient.unit }}</span>
                 <span class="input-group-btn">
                     <button class="btn btn-danger" type="button" @click="deleteIngredient($index)"><span class="icon-garbage"></span></button>
@@ -28,6 +28,7 @@
 <script>
     export default{
         name: 'IngredientSelector',
+        props: [ 'api' ],
         data(){
             return{
                 isLoading: false,
@@ -73,11 +74,16 @@
             }
         },
         ready(){
+            //Load the current List of Ingredients from the Server using the URL given by the api prop
+            if(this.api && this.api != ''){
+                this.$http.get(this.api).then((response) => {
+                    this.$set('ingredients', response.body);
+                }, (response) => {
+                    console.log('Error while prefetching ingredients via: ' + this.api);
+                });
+            }
+
             console.log('IngredientSelector.vue ready');
         }
     }
 </script>
-
-<style>
-
-</style>
