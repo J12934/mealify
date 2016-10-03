@@ -29,46 +29,18 @@ class StorageController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return view('storage.create', [
-            'name' => 'new storage'
-        ]);
-    }
-
     public function store(Request $request)
     {
-        //Map the Ingredients to get them into the right Format
-        $ingredients = collect($request->ingredients)->map(function($item){
-            return [
-                'amount' => $item
-            ];
-        })->toArray();
-
         $storage = Auth::user()->storages()->create([
             'name' => $request->name
         ]);
 
-        $storage->ingredients()->sync($ingredients);
-
         return redirect()->route( 'storage.index' );
-    }
-
-    public function edit($storage)
-    {
-        $storage = Storage::findOrFail($storage);
-
-        return view('storage.edit', [
-            'name' => 'edit storage',
-            'storage' => $storage
-        ]);
     }
 
     public function update($storage, Request $request)
     {
         $storage = Storage::findOrFail($storage);
-        $storage->name = $request->name;
-        $storage->save();
 
         //Map the Ingredients to get them into the right Format
         $ingredients = collect($request->ingredients)->map(function($item){
@@ -79,6 +51,6 @@ class StorageController extends Controller
 
         $storage->ingredients()->sync($ingredients);
 
-        return redirect()->route( 'storage.edit', $storage->id );
+        return redirect()->route( 'storage.index' );
     }
 }

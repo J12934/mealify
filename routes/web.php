@@ -26,9 +26,7 @@ Route::get('meal/', 'MealController@index')->name('meal.index');
 Route::get('meal/{id}', 'MealController@show')->name('meal.show');
 
 Route::get('storage', 'StorageController@index')->name('storage.index');
-Route::get('storage/create', 'StorageController@create')->name('storage.create');
 Route::post('storage/', 'StorageController@store')->name('storage.store');
-Route::get('storage/{storage}', 'StorageController@edit')->name('storage.edit');
 Route::patch('storage/{storage}', 'StorageController@update')->name('storage.update');
 
 Route::get('shopping-list/recipe/{id}', 'ShoppingListController@generateFromRecipe')->name('shopping-list.recipe');
