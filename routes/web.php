@@ -34,4 +34,6 @@ Route::patch('storage/{storage}', 'StorageController@update')->name('storage.upd
 Route::get('shopping-list/recipe/{id}', 'ShoppingListController@generateFromRecipe')->name('shopping-list.recipe');
 Route::get('shopping-list/meal/{id}', 'ShoppingListController@generateFromMeal')->name('shopping-list.meal');
 
+Route::get('recipe-finder/', 'SearchController@index')->name('search.index');
+
 Auth::routes();
