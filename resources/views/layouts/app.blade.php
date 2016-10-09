@@ -76,6 +76,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('meal.create') }}">Share a Meal</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('ingredient.index') }}">Ingredients</a>
+                    </li>
                 @endif
             </ul>
         </div>

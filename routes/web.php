@@ -38,4 +38,8 @@ Route::get('shopping-list/meal/{id}', 'ShoppingListController@generateFromMeal')
 
 Route::get('recipe-finder/', 'SearchController@index')->name('search.index');
 
+Route::get('ingredients', 'IngredientController@index')->name('ingredient.index');
+Route::patch('ingredients/{id}', 'IngredientController@update')->name('ingredient.update');
+Route::post('ingredients', 'IngredientController@create')->name('ingredient.create');
+
 Auth::routes();

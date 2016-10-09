@@ -54,5 +54,33 @@ class IngredientTableSeeder extends Seeder
             'price'    => 0.6,
             'count_by' => 1
         ] );
+
+        Ingredient::create( [
+            'name'     => 'Noodles',
+            'unit'     => 'g',
+            'price'    => 0.8,
+            'count_by' => 500
+        ] );
+
+        Ingredient::create( [
+            'name'     => 'Tomatoes',
+            'unit'     => 'g',
+            'price'    => 0.8,
+            'count_by' => 100
+        ] );
+
+        Ingredient::create( [
+            'name'     => 'Garlic',
+            'unit'     => 'g',
+            'price'    => 0.8,
+            'count_by' => 100
+        ] );
+
+        Ingredient::create( [
+            'name'     => 'Cheese',
+            'unit'     => 'g',
+            'price'    => 0.8,
+            'count_by' => 100
+        ] );
     }
 }
