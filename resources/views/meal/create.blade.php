@@ -4,16 +4,16 @@
     <article class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Share a Recipe with the World</h1>
+                <h1>Share a Meal with the World</h1>
             </div>
         </div>
-        {{ Form::open(['route' => ['recipe.store'], 'method' => 'post']) }}
-            @include('recipe._form')
-            <div class="row">
-                <div class="col-lg-12">
-                    <button type="submit" class="btn btn-secondary btn-lg btn-block"><span class="icon-article"></span> Save</button>
-                </div>
+        {{ Form::open(['route' => ['meal.store'], 'method' => 'post']) }}
+        @include('meal._form')
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="submit" class="btn btn-secondary btn-lg btn-block"><span class="icon-article"></span> Save</button>
             </div>
+        </div>
         {!! Form::close() !!}
     </article>
 @endsection

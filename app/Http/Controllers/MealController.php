@@ -6,6 +6,7 @@ use App\Meal;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class MealController extends Controller
 {
@@ -29,7 +30,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        return view('meal.create');
     }
 
     /**
@@ -40,7 +41,16 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Create the Recipe and attach it to the current User
+        $meal = Auth::user()->meals()->create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+        ]);
+
+        $this->updateMealRelationships( $meal, $request);
+
+        //Redirecting to the newly created Recipe
+        return redirect()->route('meal.show', $meal->id);
     }
 
     /**
@@ -67,7 +77,15 @@ class MealController extends Controller
      */
     public function edit($id)
     {
-        //
+        $meal = Meal::findOrFail($id);
+        //Redirect if the Meal does not belong to the current User
+        if(!$meal->isAllowedToBeSeenBy(Auth::user())){
+            return redirect()->route('explore')->withErrors( 'Unauthorized' );
+        }
+
+        return view('meal.edit', [
+            'meal' => $meal
+        ]);
     }
 
     /**
@@ -79,7 +97,21 @@ class MealController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $meal = Meal::findOrFail($id);
+
+        //Redirect if the Meal does not belong to the current User
+        if(!$meal->isAllowedToBeSeenBy(Auth::user())){
+            return redirect()->route('explore')->withErrors( 'Unauthorized' );
+        }
+
+        $meal->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+        ]);
+
+        $this->updateMealRelationships( $meal, $request);
+
+        return redirect()->route('meal.show', $meal->id);
     }
 
     /**
@@ -91,5 +123,20 @@ class MealController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function updateMealRelationships(Meal $meal, Request $request)
+    {
+        if( $request->has('recipes') ){
+            //Map the Ingredients to get them into the right Format
+            $recipes = collect( $request->input('recipes') )->map(function($item){
+                return [
+                    'title' => $item
+                ];
+            })->toArray();
+
+            //Adding the Ingredients to the Recipe
+            $meal->recipes()->sync($recipes);
+        }
     }
 }

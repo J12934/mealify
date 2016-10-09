@@ -4,13 +4,12 @@
     <article class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Edit your Recipe</h1>
+                <h1>Edit your Meal</h1>
             </div>
         </div>
-        {{ Form::model( $recipe, ['route' => ['recipe.update', $recipe->id], 'method' => 'patch']) }}
-        @include('recipe._form', [
-            'ingredientUrl' => 'api/recipe/ingredients/' . $recipe->id,
-            'categoriesUrl' => 'api/recipe/tags/' . $recipe->id
+        {{ Form::model($meal, ['route' => ['meal.update', $meal->id], 'method' => 'patch']) }}
+        @include('meal._form', [
+            'recipeUrl' => route('api.meal.recipes', $meal->id)
         ])
         <div class="row">
             <div class="col-lg-12">

@@ -1,8 +1,3 @@
-<div class="row">
-    <div class="col-lg-12">
-        <h1>Share a Recipe with the World</h1>
-    </div>
-</div>
 <div class="row" style="margin-top: 25px">
     <div class="col-lg-9">
         <div class="form-group">

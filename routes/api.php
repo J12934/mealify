@@ -1,8 +1,9 @@
 <?php
 
-use App\Recipe;
 use Illuminate\Http\Request;
 
+use App\Recipe;
+use App\Meal;
 use App\Ingredient;
 use App\Storage;
 use App\Category;
@@ -67,3 +68,28 @@ Route::get('/recipe/ingredients/{id}', function ($id) {
 Route::get('/recipe/tags/{id}', function ($id) {
     return Recipe::findOrFail($id)->categories()->select( 'id', 'name')->get();
 });
+
+/**
+ * Returns a list of recipes matched by the query
+ */
+Route::get('/recipes/{query}', function ($query) {
+    return Recipe::where('name', 'like', '%' . $query . '%')->get();
+});
+
+/**
+ * Returns a list of recipes matched by the query
+ */
+Route::get('/meal/{id}/recipes', function ($id) {
+    return Meal::findOrFail($id)
+        ->recipes()
+        ->select('id', 'name')
+        ->get()
+        ->map(function ($item){
+            return [
+                'id' => $item->id,
+                'name' => $item->name,
+                'title' => $item->pivot->title
+            ];
+        });
+})->name('api.meal.recipes');
+

@@ -53,4 +53,11 @@ class Meal extends Model implements GeneratesIngredientList
             return $item->generateIngredientList();
         }) );
     }
+
+    public function isAllowedToBeSeenBy($user)
+    {
+        if ($user == null)
+            return false;
+        return $user->id == $this['user_id'];
+    }
 }

@@ -60,9 +60,6 @@
                 @endif
             </ul>
             <ul class="nav navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Explore</a>
-                </li>
                 @if (Auth::check())
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route( 'search.index' ) }}">Recipe Finder</a>
@@ -75,6 +72,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('recipe.create') }}">Share a Recipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('meal.create') }}">Share a Meal</a>
                     </li>
                 @endif
             </ul>

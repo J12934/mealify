@@ -23,7 +23,11 @@ Route::post('recipe/', 'RecipeController@store')->name('recipe.store');
 Route::get('user/recipes', 'RecipeController@indexUserRecipes')->name('user.recipes');
 
 Route::get('meal/', 'MealController@index')->name('meal.index');
+Route::post('meal/', 'MealController@store')->name('meal.store');
+Route::get('meal/create', 'MealController@create')->name('meal.create');
+Route::get('meal/{id}/update', 'MealController@edit')->name('meal.edit');
 Route::get('meal/{id}', 'MealController@show')->name('meal.show');
+Route::patch('meal/{id}', 'MealController@update')->name('meal.update');
 
 Route::get('storage', 'StorageController@index')->name('storage.index');
 Route::post('storage/', 'StorageController@store')->name('storage.store');
