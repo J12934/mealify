@@ -38,7 +38,7 @@
                 } else {
                     this.isLoading = true;
 
-                    this.$http.get('/api/categories/' + query).then((response) => {
+                    this.$http.get('api/categories/' + query).then((response) => {
                         this.$set('categoriesList', response.body);
                         this.isLoading = false;
                     }, (response) => {

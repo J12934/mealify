@@ -52,7 +52,7 @@
                 } else {
                     this.isLoading = true;
 
-                    this.$http.get('/api/ingredients/' + query).then((response) => {
+                    this.$http.get('api/ingredients/' + query).then((response) => {
                         this.$set('ingredientsList', response.body);
                         this.isLoading = false;
                     }, (response) => {

@@ -63,10 +63,10 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Explore</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Recipe Finder</a>
-                </li>
                 @if (Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route( 'search.index' ) }}">Recipe Finder</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('user.recipes') }}">Your Recipes</a>
                     </li>

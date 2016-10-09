@@ -10,30 +10,39 @@
         <div class="row">
             @foreach($user->storages as $storage)
                 <div class="col-lg-4 col-md-6 col-xs-12">
-                    <a href="{{ route('storage.edit', $storage->id ) }}" class="disovery-link">
-                        <div class="card">
-                            <div class="card-block">
-                                <h4 class="card-title">
-                                    {{ $storage->name }}
-                                    <span class="pull-xs-right"><span class="icon-arrow-right"></span></span>
-                                </h4>
-                                <small class="tag tag-info">{{ $storage->ingredients->count() }} Ingredients</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-            <div class="col-lg-4 col-md-6 col-xs-12">
-                <a href="{{ route('storage.create' ) }}" class="disovery-link">
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title">
-                                Create a new Storage
-                                <span class="pull-xs-right"><span class="icon-arrow-right"></span></span>
+                                <strong>{{ $storage->name }}</strong>
+                                <span class="pull-xs-right">
+                                    Ingredients
+                                </span>
                             </h4>
+                            {{ Form::model($storage, ['route' => ['storage.update', $storage->id], 'method' => 'patch']) }}
+                                @include('storage._form', [
+                                    'url' => 'api/storage/' . $storage->id
+                                ])
+                                {!! Form::submit('Update', ['class' => 'btn btn-secondary btn-block']) !!}
+                            {!! Form::close() !!}
                         </div>
                     </div>
-                </a>
+                </div>
+            @endforeach
+            <div class="col-lg-4 col-md-6 col-xs-12">
+                <div class="card">
+                    <div class="card-block">
+                        <h4 class="card-title">
+                            <strong>Create a new Storage</strong>
+                        </h4>
+                        {{ Form::open(['route' => ['storage.store'], 'method' => 'post']) }}
+                            <div class="form-group">
+                                {!! Form::label('name', 'Name') !!}
+                                {!! Form::text('name', null, [ 'class' => 'form-control' ]) !!}
+                            </div>
+                            {!! Form::submit('Create', ['class' => 'btn btn-secondary btn-block']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                </div>
             </div>
         </div>
     </article>

@@ -17,7 +17,7 @@ class StorageTableSeeder extends Seeder
         $user = User::find(1);
 
         $user->storages()->create([
-            'name' => 'Kühlschrank'
+            'name' => 'Fridge'
         ])->ingredients()->sync([
             1 => [ 'amount' => 70],
             3 => [ 'amount' => 220],
@@ -26,7 +26,7 @@ class StorageTableSeeder extends Seeder
         ]);
 
         $user->storages()->create([
-            'name' => 'Keller'
+            'name' => 'Cabinets'
         ]);
     }
 }
