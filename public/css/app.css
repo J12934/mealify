@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 /*!
  * Bootstrap v4.0.0-alpha.4 (http://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
@@ -256,7 +255,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: #373a3c;
@@ -3975,7 +3974,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Raleway", sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -4054,7 +4053,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: "Raleway", sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
