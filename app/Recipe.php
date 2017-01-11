@@ -62,6 +62,15 @@ class Recipe extends Model implements GeneratesIngredientList
         return $this->belongsToMany( 'App\Category' );
     }
 
+    public static function cookableBy(User $user)
+    {
+        $recipes = Recipe::all();
+
+        return $recipes->filter(function (Recipe $recipe) use ($user){
+            return $user->canCook($recipe);
+        });
+    }
+
     public function isAllowedToBeSeenBy($user)
     {
         if ($user == null)

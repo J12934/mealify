@@ -19,4 +19,18 @@ class Storage extends Model implements GeneratesIngredientList
     {
         return $this->belongsToMany( 'App\Ingredient' )->withPivot( 'amount' );
     }
+
+
+    /**
+     * Returns how much of the ingredient is stored
+     */
+    public function ingredientAmmount(Ingredient $ingredient)
+    {
+        $storedIngredient = $this->ingredients->where('id', $ingredient->id)->first();
+        if($storedIngredient != null){
+            return $storedIngredient->pivot->amount;
+        }
+
+        return 0;
+    }
 }
