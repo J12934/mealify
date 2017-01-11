@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Recipe;
+use App\Ingredient;
+
 use App\Interfaces\GeneratesIngredientList;
 
 use App\Traits\CompressesIngredientList;
@@ -53,6 +56,43 @@ class User extends Authenticatable implements GeneratesIngredientList
     {
         return $this->hasMany( 'App\Storage' );
     }
+
+    /**
+     * Returns true if the User has all the necessary Ingredients to cook the Recipe
+     * @return boolean
+     * TODO
+     */
+    public function canCook(Recipe $recipe){
+        $ingredients = $recipe->ingredients;
+
+        foreach ($ingredients as $ingredient) {
+            if(!$this->hasSufficientOfIngredient($ingredient, $ingredient->pivot->amount)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns how much of the Ingredient is stored ofer all storages of the user
+     * @return number
+     */
+    public function amountOfIngredientStored(Ingredient $ingredient){
+        return $this->storages->sum(function (Storage $storage) use ($ingredient){
+            return $storage->ingredientAmmount($ingredient);
+        });
+    }
+
+    /**
+     * Returns true if the User has enough of the ingredient
+     * @return boolean
+     */
+    public function hasSufficientOfIngredient(Ingredient $ingredient, $amount){
+        return $this->amountOfIngredientStored($ingredient) >= $amount;
+    }
+
+
 
     function generateIngredientList()
     {
