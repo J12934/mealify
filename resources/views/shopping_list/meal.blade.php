@@ -6,8 +6,10 @@
             <div class="col-lg-12">
                 @include('components.card-row')
             </div>
+        </div>
+        <div class="row" style="margin-top: 25px">
             <div class="col-lg-4 push-lg-8">
-                <h1>Your Shopping List</h1>
+                <h3>Your Shopping List</h3>
                 <ul class="list-unstyled">
                     @foreach($diff['list'] as $item)
                     <li>
@@ -22,7 +24,7 @@
                 </ul>
             </div>
             <div class="col-lg-8 pull-lg-4">
-                <h1>Directions</h1>
+                <h3>Directions</h3>
                 {!! $meal->description !!}
             </div>
         </div>

@@ -42,4 +42,6 @@ Route::get('ingredients', 'IngredientController@index')->name('ingredient.index'
 Route::patch('ingredients/{id}', 'IngredientController@update')->name('ingredient.update');
 Route::post('ingredients', 'IngredientController@create')->name('ingredient.create');
 
+Route::get('ingredients/take/recipe/{recipe}', 'RecipeController@takeFromStorage')->name('recipe.take.ingredients');
+
 Auth::routes();
