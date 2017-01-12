@@ -5,6 +5,8 @@ namespace App;
 use App\Recipe;
 use App\Ingredient;
 
+use App\ExtractionLog;
+
 use App\Interfaces\GeneratesIngredientList;
 
 use App\Traits\CompressesIngredientList;
@@ -58,9 +60,21 @@ class User extends Authenticatable implements GeneratesIngredientList
     }
 
     /**
+     * Take Ingredients of a Recipe from Storage
+     * If first Storage cant provide all of the required Ingredients take the rest from the 2nd, 3rd ...
+     */
+    public function takeFromStorage(Recipe $recipe, ExtractionLog $extractionLog)
+    {
+        $ingredients = new IngredientList($recipe);
+
+        foreach ($this->storages as $storage) {
+            $storage->takeIngredients($ingredients, $extractionLog);
+        }
+    }
+
+    /**
      * Returns true if the User has all the necessary Ingredients to cook the Recipe
      * @return boolean
-     * TODO
      */
     public function canCook(Recipe $recipe){
         $ingredients = $recipe->ingredients;
