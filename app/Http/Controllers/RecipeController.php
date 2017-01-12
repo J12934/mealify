@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
+use App\ExtractionLog;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -143,6 +144,19 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function takeFromStorage(Recipe $recipe)
+    {
+        $user = Auth::user();
+
+        $extractionLog = new ExtractionLog;
+
+        $user->takeFromStorage($recipe, $extractionLog);
+
+        return view('recipe.extraction_log', [
+            'log' => $extractionLog->getLog()
+        ]);
     }
 
     private function updateRecipeRelationships($recipe, Request $request)
